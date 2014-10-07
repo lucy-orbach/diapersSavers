@@ -1,0 +1,335 @@
+@import "myVariables.scss";
+
+a {
+  @include transition();
+}
+*:before, *:after {
+  font-family: 'FontAwesome';  
+  }
+.ir,
+#logo {
+text-indent: -9999px;
+}
+
+// ============================== //
+#topBar {
+	a {
+		font-size: 0.8rem;
+		color: white;
+	}// a
+	.top-bar-ad {
+		position: absolute;
+		left: 45%;
+		height: 25px;
+		line-height: 23px;
+		padding: 0px 2em;
+		border-bottom-right-radius: 1em;
+		border-bottom-left-radius: 1em;
+		background-color: $teal;	
+		@include shadow(1px);
+	}//top-bar-ad
+	ul.top-nav {
+		margin-right: 1.375rem;
+	}//top-nav
+	li.top-search {
+		padding: 0px 10px;
+		label {
+			color: white;
+			float: left;
+			height: 30px;
+			line-height: 2;
+			margin-right: 0px;
+			@include transition(all, 1s);
+		}//label
+		input[type=text]{
+			-webkit-appearance: none;
+   		-moz-appearance:    none;
+   		appearance:         none;
+   		position: relative;
+   		float: left;
+			width: 0px;
+			height: 23px;
+			top: 3px;
+			background-color: transparent;
+			border: 0px solid transparent;
+			box-shadow: none;
+			border-bottom: 2px solid $gray;
+			opacity: 0;
+			@include transition(all, 1s);
+		}//input
+		span {
+			display: block;
+			position: relative;
+   		float: left;
+			width: 35px;
+			height: 23px;
+			color: white;
+			opacity: 1;
+			@include transition(all, 1s);
+		  &:before {
+				content: '\f002';
+        position: absolute;
+        left: -7px;
+        cursor: pointer;
+			}// span:before
+		}//span
+		&:hover {
+			background-color: $orange;
+			color: $gray;
+			label {
+				color: $gray;
+				margin-right: 5px;
+			}// :hover label
+			input[type=text]{
+				width: 200px;
+				opacity: 100;
+				@include transition(all, 1s);
+			}// hover input
+			span {
+				left: 5px;
+				color: $gray;
+				@include transition(all, 1s);
+			}//hover span
+		}//hover
+	}//li.top-search
+} //topBar
+// ============================== //
+.branding {
+	position: relative;
+	padding-bottom: 5rem;
+	margin-top: -3px;
+	background: $teal url(../img/bgd-teal.png) repeat;
+	.diaper-saver {
+		width: 420px;
+		height: 145px;
+	}
+	h2 {
+		padding: 3px 20px;
+		color: white;
+		font-size: 1.8rem;
+	}
+	span {
+		position: absolute;
+		bottom: 0px;
+		display: block;
+		width: 100%;
+		height: 40px;
+		background: url(../img/bgd-curtain.png) repeat-x left bottom;
+	}
+}
+// ============================== //
+#resultsBar {
+	height: 40px;
+	padding-top: 3px;
+	margin-top: 0px;
+	color: #ffffff;
+	background-color: $gray;
+	h5,label {
+		color: #ffffff;
+	}//h5,label
+	#sortBy {
+		select {
+			width: 12rem;
+			height: 1.5rem;
+			padding: 0px 10px;
+			margin: 4px 25px 0px 5px;
+			border: none;
+			border-radius: .75rem;
+		}//select
+	}//sortBy
+	li, label {
+		font-size: .875rem;
+		line-height: 2rem;
+	}
+	.view-as {
+		position: relative;
+		display: inline-block;
+		width: 30px;
+		height: 25px;
+		margin-left: 5px;
+		font-size: 1.3rem;
+		cursor: pointer;
+		&:before {
+			position: absolute;
+			right: 0px;
+		}
+		a {
+			display: block;
+		}
+	}
+	.grid:before {
+			content:'\f00a';	
+	}
+	.list:before {
+			content:'\f00b';	
+	}
+	.viewing:before {
+			color: $orange;
+		}
+}//resultsBar
+ #mainResults {
+ 		max-width: 98%;
+ 		margin-top: 10px;
+ 		font-size: 1rem !important;
+
+	aside {
+		position: relative; 
+		padding-top: 20px;
+		background-color: #fff;
+		@include shadow();
+		h1,h2 {
+			font-size: 1.5rem;
+		}
+		h2 {
+			position: relative;
+			left: -25px;
+			width: 195px;
+			height: 50px;	
+			padding: 10px 20px 0px 15px;
+			color: #fff;
+			&:before {
+				content: '';
+				position: absolute;
+				left: 2px;
+				top: 0px;
+				display: block;
+				width: 190px;
+				height: 50px;
+				background: url(../img/sprites.png) no-repeat 0px -300px;
+			}//h2:before
+			&:after {
+				@include bannerArrow();
+				border-right-color: #fff;
+				right: 0px; 
+				top: 0px;
+			}//h2:after
+		}//h2
+		#sizeBanner {
+			background-color: $watermelon;
+			@include transition();
+			&:hover {
+				background-color:  darken($watermelon, 15%);
+				@include transition();
+			}
+		}
+		#brandBanner {
+			background-color: $orange;
+			@include transition();
+			&:hover {
+				background-color:  darken($orange, 15%);
+				@include transition();
+			}
+		}
+
+		ul {
+			font-size: .875rem;
+		}
+	}//aside
+
+	main {
+		.block {
+			position: relative;
+			width: 100%;
+			height: 350px;
+			padding: 1rem;
+			margin-bottom: 0.9375rem;
+			background-color: #fff;
+			@include shadow();
+			font-size: .875rem;
+			text-align: center;
+		}//block
+		.th {
+			box-shadow: none;
+		}
+		h6 {
+			font-family: helvetica;
+		}
+		.pin-link {
+			position: relative;
+			background-color: $beige;
+			padding: 7px 25px 7px 43px;
+			color: $teal;
+			border-radius: 10px;
+			text-align: left;
+			font-family: 'Handlee', cursiva;
+			font-size: 1.125rem;
+			font-weight: bold;
+			line-height: 1.4rem;
+			@include shadow (2px, 3px);
+			cursor: pointer;
+			@include transition();
+			&:before {
+				content:'';
+				position: absolute;
+				top: -5px;
+				left: 0px;
+				display: block;
+				width: 35px;
+				height: 63px;
+				background: url(../img/sprites.png) no-repeat 0px 0px;
+			}//pin-link:before
+			&:hover {
+				background-color:  darken($beige, 15%);
+				@include transition();
+			}
+
+		}
+	}//main
+}//mainResults
+
+
+
+
+
+
+
+
+	// .has-slide-right {
+	// 	position: relative;
+	// 	.slide-container {
+	// 		position: absolute;
+	// 		top: 50px;
+	// 		right: 300px;
+	// 	}
+	//}//has-slide		
+			
+			
+// 			form {
+// 				
+// 			}
+// 		}
+
+
+	// > * {
+	// 	float: left;
+	// 	width: auto;
+	// 	height: 23px;
+	// 	margin: 10px;
+	// 	font-size: .8rem;
+	// 	border: 1px solid $gray;
+	// }
+	
+	// select {
+	// 	padding: 0px 20px 0px 3px;
+	// 	min-width: 90px;
+	// 	option {
+	// 		font-size: .8rem;
+	// 	}
+	// }
+
+	// button {
+	// 	padding: 0px 15px;
+	// 	top: 0px;
+	// }
+
+
+//#topSearch {
+// 			position: relative;
+// 			width: 300px;
+// 			height: 100px;
+// 			background-color: $orange;
+// 			background-image:  url('../img/sprites.png');
+// 			background-repeat:  no-repeat;
+// 			background-position: -500px -600px;
+// }
+// 		

@@ -1,0 +1,47 @@
+$teal: #5daba8;
+$gray: #676464;
+$watermelon: #ed4f50;
+$orange: #efa04d;
+$yellow: #f5ca53;
+$beige: #f9f9f7;
+
+$dark-gray: ($gray, 50%);
+$londrina: 'Londrina Solid', cursive;
+$handlee: 'Handlee', cursive;
+
+
+
+/* min-in */
+@mixin bgd($bgd, $font) {
+  background-color: $bgd;
+  color: $font;
+}
+
+@mixin shadow( $hv:3px, $vv:4px) {
+	-webkit-box-shadow: $hv $vv $hv rgba(0,0,0, 0.3);
+	-moz-box-shadow: $hv $vv $hv rgba(0,0,0, 0.3);
+	box-shadow: $hv $vv $hv rgba(0,0,0, 0.3);
+}
+
+
+@mixin transition($prop:all, $time:0.8s) {
+  transition: $prop $time; 
+}
+
+@mixin sprite( $size:100%) {
+  background: url(../img/sprites.png) no-repeat;
+  background-size: $size;
+}
+
+@mixin bannerArrow( $h:50px, $btop:25px, $bzs:20px) {
+  content:'';
+  position: absolute;
+  width: 0px;
+  height: $h;
+  border-top: $btop solid transparent;
+  border-bottom: $btop solid transparent;
+  border-left: $bzs solid transparent;
+  border-right: $bzs solid transparent;
+}
+
+
