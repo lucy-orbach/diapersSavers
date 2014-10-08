@@ -12,6 +12,18 @@ a {
   text-indent: -9999px;
 }
 
+select,
+input[type='text'],
+input[type='email'],
+textarea {
+  border: none;
+  border-radius: .75rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
 #topBar a {
   font-size: 0.8rem;
   color: white;
@@ -53,6 +65,7 @@ a {
   height: 23px;
   top: 3px;
   background-color: transparent;
+  border-radius: 0px;
   border: 0px solid transparent;
   box-shadow: none;
   border-bottom: 2px solid #676464;
@@ -128,17 +141,15 @@ a {
 #resultsBar h5, #resultsBar label {
   color: #ffffff;
 }
-#resultsBar #sortBy select {
+#resultsBar li, #resultsBar label {
+  font-size: .875rem;
+  line-height: 2rem;
+}
+#resultsBar select {
   width: 12rem;
   height: 1.5rem;
   padding: 0px 10px;
   margin: 4px 25px 0px 5px;
-  border: none;
-  border-radius: .75rem;
-}
-#resultsBar li, #resultsBar label {
-  font-size: .875rem;
-  line-height: 2rem;
 }
 #resultsBar .view-as {
   position: relative;
@@ -281,4 +292,47 @@ a {
 #mainResults main .pin-link:hover {
   background-color: #d8d8cb;
   transition: all 0.8s;
+}
+
+footer {
+  background: #676464 url("../img/bgd-doodles.png") repeat;
+  padding: 0px;
+  margin-top: 50px;
+}
+footer h3, footer a, footer p {
+  color: #fff;
+}
+footer #footer-top {
+  padding-top: 30px;
+}
+footer #footer-top h3 {
+  position: relative;
+  border-bottom: 2px dotted #fff;
+  margin-bottom: 2rem;
+  padding-left: 50px;
+}
+footer #footer-top h3:before {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: -6px;
+  display: block;
+  height: 3rem;
+  width: 3rem;
+  background: url("../img/sprites.png") no-repeat;
+}
+footer #footer-top #why:before {
+  background-position: -213px -305px;
+}
+footer #footer-top #contactus:before {
+  background-position: -283px -307px;
+}
+footer ul.bxslider img {
+  max-width: 100%;
+  height: auto;
+}
+footer #footer-nav {
+  padding: 20px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
 }
