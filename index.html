@@ -57,8 +57,8 @@
       </nav><!-- top-bar -->
       <!-- hero branding --> 
       <div class="branding text-center">
-        <h1 id="logo">Diapers Savers</h1>
-        <a class="diapers-savers" href="http://www.diaperssavers.com/"><img src="img/diaperssavers.png" alt="Diapers Savers" /></a>
+        <h1>Diapers Savers</h1>
+        <a class="logo" href="http://www.diaperssavers.com/"><img src="img/diaperssavers.png" alt="Diapers Savers" /></a>
         <h2>Compare Diaper Prices and Save!</h2>
         <span id="curtain"></span>
     </header>
@@ -95,12 +95,12 @@
       </div>
     </section>
     <!-- Results and Side Filter -->
-    <div id="mainResults" class="row expand">
+    <section id="mainResults" class="row expand">
       <aside  class="medium-2 columns">
         <h1>Refine your Results</h1>
-        <h2 id="sizeBanner">By Size</h2>
+        <h2 class="banner" id="sizeBanner">By Size</h2>
         <ul id="selectSize">
-          <li>All Sizes</li>
+          <li>Include All Sizes</li>
           <li>Newborn (Up to 10 lbs)</li>
           <li>Size 1 (8 to 14 lbs)</li>
           <li>Size 2 (12 to 18 lbs)</li>
@@ -108,9 +108,9 @@
           <li>Size 4 (23 to 37 lbs)</li>
           <li>Size 5 (More Than 27 lbs)</li>
         </ul>  <!-- select size list  -->
-        <h2 id="brandBanner">By Brand</h2>
+        <h2 class="banner" id="brandBanner">By Brand</h2>
         <ul id="selectBrand">
-          <li>All Brands</li>
+          <li>Include All Brands</li>
           <li>Huggies
             <ul>
               <li>All Types</li>
@@ -138,42 +138,50 @@
             </ul>
           </li>
           <li>Earth's Best</li>
-          <li>gDiapers</li>
+          <li>gDiapers
             <ul>
               <li>All Types</li>
               <li>gPants</li>
             </ul>
-          <li>Luvs</li>
+          </li>
+          <li>Luvs
             <ul>
               <li>All Types</li>
               <li>Ultra Leakguards</li>
             </ul>
+          </li>
           <li>Seventh Generation
             <ul>
               <li>All Types</li>
-              <li>Free and Clear
-
-
-              </li>
+              <li>Free and Clear</li>
             </ul>
           </li>
         </ul>  <!-- select Brand -->    
       </aside>
       <main class="medium-10 columns">
-        <div class="row expand">
+        <div  id="searchResults" class="row expand">
+          
           <!-- block -->
           <div class="block-container columns small-6 medium-4 large-3">
-            <div class="block">
-              <img src="img/pic1.jpg" class="th" alt="Pampers">
-              <h6>Pampers Swaddlers Diapers Size 1 Economy Pack Plus 216 Count</h6>
-              <div class="pin-link">
-                <a href="#">See Count Options &amp; Compare Prices</a>
-              </div>
-            </div>
+            <ul class="block">
+              <li class="thumb">
+                <img src="img/pic1.jpg" class="th" alt="Pampers">
+              </li>
+              <li class="name">
+                <h6>Pampers Swaddlers Diapers Size 1 Economy Pack Plus 216 Count</h6>
+              </li>
+              <li class="button-area">
+                <a href="#" class="bubble compare">See Count Options &amp; Compare Prices</a>
+              </li>
+            </ul>
           </div><!-- block end -->
-        </div><!-- row for blocks ends -->
+          
+          
+          
+          
+        </div><!-- row expand ends -->
       </main>
-    </div> <!-- main results container: include aside and main -->
+    </section> <!-- main results container: include aside and main -->
     <!-- Footer -->
     <footer>
       <div id="footer-top" class="row">

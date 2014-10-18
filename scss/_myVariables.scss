@@ -17,10 +17,10 @@ $handlee: 'Handlee', cursive;
   color: $font;
 }
 
-@mixin shadow( $hv:3px, $vv:4px) {
-	-webkit-box-shadow: $hv $vv $hv rgba(0,0,0, 0.3);
-	-moz-box-shadow: $hv $vv $hv rgba(0,0,0, 0.3);
-	box-shadow: $hv $vv $hv rgba(0,0,0, 0.3);
+@mixin shadow( $hv:2px, $vv:1px) {
+	-webkit-box-shadow: $hv $hv $hv $vv  rgba(0,0,0, 0.3);
+	-moz-box-shadow: $hv $hv $hv $vv rgba(0,0,0, 0.3);
+	box-shadow: $hv $hv $hv $vv rgba(0,0,0, 0.3);
 }
 
 
@@ -42,6 +42,12 @@ $handlee: 'Handlee', cursive;
   border-bottom: $btop solid transparent;
   border-left: $bzs solid transparent;
   border-right: $bzs solid transparent;
+}
+
+@mixin radius ( $rad:20px) {
+  -webkit-border-radius: $rad;
+  -moz-border-radius: $rad;
+  border-radius: $rad;
 }
 
 

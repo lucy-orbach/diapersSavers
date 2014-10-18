@@ -1,13 +1,13 @@
 @import "myVariables.scss";
 
-a {
+a, a:hover {
   @include transition();
 }
 *:before, *:after {
   font-family: 'FontAwesome';  
   }
 .ir,
-#logo {
+.branding h1 {
 text-indent: -9999px;
 }
 select, 
@@ -17,10 +17,92 @@ textarea {
 	border: none;
 	border-radius: .75rem;
 }
+input:focus::-webkit-input-placeholder, 
+textarea:focus::-webkit-input-placeholder {
+  transition: text-indent 0.5s 0.2s ease;
+  text-indent: -100%;
+  opacity: 1;
+}
 ul {
 	list-style-type: none;
 }
-// ============================== //
+span.small {
+	font-size: .75rem;
+}//span
+.chosen {
+  position: relative;
+  padding-left: 25px;
+  &:before {
+  	content: '';
+  }
+}
+.remove {
+
+}
+.container	{
+	width: 97%;
+	max-width: 1200px;
+}
+.banner{
+		position: relative;
+		width: 195px;
+		height: 50px;	
+		padding: 10px 20px 0px 15px;
+		color: #fff;
+		&:before {
+			content: '';
+			position: absolute;
+			left: 2px;
+			top: 0px;
+			display: block;
+			width: 190px;
+			height: 50px;
+			background: url(../img/sprites.png) no-repeat 0px -300px;
+		}//h2:before
+		&:after {
+			@include bannerArrow();
+			border-right-color: #fff;
+			right: 0px; 
+			top: 0px;
+		}//h2:after
+	}//banner
+.bubble {
+	@include radius(15px);
+	padding: 12px 20px;
+	color: #fff;
+	background: $watermelon url('../img/sprites.png') no-repeat;
+	font-family: 'Handlee', cursiva;
+	font-size: 1.125rem;
+	font-weight: bold;
+	line-height: 1.4rem;
+	cursor: pointer;
+	//@include shadow();
+	@include transition();
+		&:hover {
+			background-color:  darken($watermelon, 15%);
+			@include transition();
+		}//hover
+}//bubble
+.pin-link {
+	position: relative;
+	padding: 7px 25px 7px 43px;
+	text-align: left;
+	&:before {
+		content:'';
+		position: absolute;
+		top: -5px;
+		left: 0px;
+		display: block;
+		width: 35px;
+		height: 63px;
+		background: url(../img/sprites.png) no-repeat 0px 0px;
+	}//:before
+	&:hover {
+		background-color:  darken($beige, 15%);
+		@include transition();
+	}//:hover
+}//pin-link
+// ======================= //
 #topBar {
 	a {
 		font-size: 0.8rem;
@@ -103,15 +185,15 @@ ul {
 		}//hover
 	}//li.top-search
 } //topBar
-// ============================== //
+// ======================= //
 .branding {
 	position: relative;
 	padding-bottom: 5rem;
 	margin-top: -3px;
 	background: $teal url(../img/bgd-teal.png) repeat;
-	.diaper-saver {
-		width: 420px;
-		height: 145px;
+	.logo {
+		display: inline-block;
+		width: 400px;
 	}
 	h2 {
 		padding: 3px 20px;
@@ -126,8 +208,20 @@ ul {
 		height: 40px;
 		background: url(../img/bgd-curtain.png) repeat-x left bottom;
 	}
+}//branding
+.branding.insider {
+	padding-bottom: 1rem;
+	h1{
+		font-size: .75rem;
+	}
+	.logo {
+		width: 300px;
+	}
+	span {
+		background: url(../img/bgd-curtainwh.png) repeat-x left bottom;
+	}
 }
-// ============================== //
+// ======================== //
 #resultsBar {
 	height: 40px;
 	padding-top: 3px;
@@ -146,9 +240,9 @@ ul {
 	}
 	select {
 		width: 12rem;
-			height: 1.5rem;
-			padding: 0px 10px;
-			margin: 4px 25px 0px 5px;
+		height: 1.5rem;
+		padding: 0px 10px;
+		margin: 4px 25px 0px 5px;
 	}
 	.view-as {
 		position: relative;
@@ -176,115 +270,303 @@ ul {
 			color: $orange;
 		}
 }//resultsBar
-// ============================== //
+// ======================== //
 #mainResults {
 	max-width: 98%;
 	margin-top: 10px;
 	font-size: 1rem !important;
-	aside {
-		position: relative; 
-		padding-top: 20px;
-		background-color: #fff;
-		@include shadow();
-		h1,h2 {
-			font-size: 1.5rem;
+}//mainResults
+aside {
+	position: relative; 
+	padding-top: 20px;
+	background-color: #fff;
+	border: 4px solid $gray;
+	//@include shadow();
+	@include radius();
+	h1,h2 {
+		font-size: 1.5rem;
+	}
+	.banner{
+		left: -25px;
+	}
+	#sizeBanner {
+		background-color: $watermelon;
+		@include transition();
+		&:hover {
+			background-color:  darken($watermelon, 15%);
+			@include transition();
+		}//hover
+	}//sizeBanner
+	#brandBanner {
+		background-color: $orange;
+		@include transition();
+		&:hover {
+			background-color:  darken($orange, 15%);
+			@include transition();
+		}//hover
+	}//brandBanner
+
+	ul {
+		font-size: .875rem;
+	}
+}//aside
+main {
+	.block-container { 
+		max-width: 275px;
+		&.columns:last-child {
+			float: left;
 		}
-		h2 {
-			position: relative;
-			left: -25px;
-			width: 195px;
-			height: 50px;	
-			padding: 10px 20px 0px 15px;
+	}//block-container
+	.block {
+		position: relative;
+		width: 100%;
+		padding: 1rem;
+		margin-bottom: 0.9375rem;
+		background-color: #fff;
+		border: 4px solid $gray;
+		// @include shadow();
+		@include radius();
+		font-size: .875rem;
+		text-align: center;
+		&:last-child {
+			float: left;
+		}//:last child
+	}//block
+}//main
+#searchResults {
+	.th, .th:hover {
+		box-shadow: none;
+	}//th
+	li.name {
+		height: 80px;
+		h6 {
+			font-size: 1rem;
+			font-family: helvetica;
+			line-height: 1rem;
+		}
+	}//li.name
+	a.compare {
+		display: block;
+		width: 100%;
+		height: 80px;
+		background-position-x: -195px;
+		background-position-y: -305px;
+		
+	}
+}//searchResults
+#itemDet{
+	height: auto;
+	padding: 1rem 0rem 0rem;
+	border: 6px solid $gray;
+	h3 {
+		width: 80%;
+		padding-bottom: 1rem;
+		margin-bottom: 1rem;
+		border-bottom: 2px dotted $yellow;
+		text-align: center;
+	}//h3
+}//itemDet
+#itemInfo {
+	padding-top: 10px;
+	h6, p {
+		color: $gray;
+		text-align: left;
+		font-size: .875rem;
+		color: lighten($gray, 20%);
+		line-height: 1rem;
+	}//mixed
+	p {
+		line-height: 1.5rem;
+		a{
+			font-style: italic;
+			padding-left: 10px;
+		}
+	}
+	a[data-reveal-id='setAlert'] {
+		display: block;
+		color: $teal;
+		text-align: left;
+		&:before {
+			content: '\f0a2';
+			font-size: 1.2rem;
+			padding-right: 7px;
+		}
+	}
+	.bubble {
+		position: absolute;
+		top: 12rem;
+		right: 3rem;
+		width: 295px;
+		background-position-x: -617px;
+		background-position-y: -299px;
+		h5 {
+			margin-bottom: 0;
+		}//h5
+		a {
 			color: #fff;
+			&.buy { 
+				font-size: 1.5rem;
+				&:after {
+					content: '\f0a9';
+					padding-left: 5px;
+				}
+			}	
+	}//bubble
+		}
+}//itemInfo
+#itemChart {
+	position: relative;
+	padding-bottom: 20px;
+	background-color: $gray;
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		display: block;
+		width: 100%;
+		height: 18px;
+		background: #ffffff url('../img/bgd-curtain.png') repeat-x ;
+	}//:itemChart:before
+}//itemChart
+#options {
+			margin: 0px;
+			padding-top: 30px;
+			label, a {
+				color: #fff;
+			}//multi
+			h5, h6 {
+				color: $yellow;
+			}
+			h5 {
+				float: left;
+				line-height: 1.1rem;
+				
+			}//h5
+			h6 {
+				font-family: 'Handlee', cursive;
+				&:after {
+					content: '\f0a4';
+					padding-left: 10px;
+					color: $teal;
+				}
+			}
+			form {
+				padding: 0px 0px 0px 10px;
+				font-size: .875rem;
+				&:after {
+				content: '\f142';
+				padding-left: 10px;
+				color: $teal;
+			}
+				& > * {
+					float: left;
+				} //form > *
+			}//form
+			label {
+				line-height: 1.6rem;
+				margin: 0rem .25rem 0rem .75rem;
+			}//label
+			select {
+				width: 47px;
+				height: 25px;
+				padding: 0px .5rem;
+			}//select
+		}//options
+#inMember {
+	ul {
+		margin-left: 0px;
+	}
+	li {
+		position: relative;
+		padding-left: 14px;
+		color: #fff;
+		font-size: .85rem;
+		line-height: 1.6rem;
+		cursor: pointer;
+		&:before {
+			content: '\f10c';
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}//li:before
+	}//li
+	li.active {	
+		&:before {
+			content: '\f05d';
+		}//li:before
+	}//li.active
+}
+#priceComparison {
+	margin: 0rem;
+	@include radius();
+	// background-color: #fff;
+	// border: 4px solid $yellow;
+}//priceComparison
+#pcList{
+	width: 95%;
+	margin: 0px auto;
+	.pricing-table {
+		border-radius: 15px;
+		border: none;
+		.title {
+			height: 70px;
+			border-top-left-radius: 15px;
+			border-top-right-radius: 15px;
+			background-color: $yellow;
+			color: $gray;
+			vertical-align: center;
+		}//title
+		.price {
+			color: $gray;
+			// background-color: $beige;
+			font-weight: bold;
+			background-color: #fff;
+		}//price
+		.cta-button {
+			border-bottom-left-radius: 15px;
+			border-bottom-right-radius: 15px;
+			background-color: $beige;
+			a{
+				padding: 1rem;
+				background-color: $orange;
+				&:hover {
+					background-color: $watermelon;
+				}//a:hover
+			}//a
+		}//cta-button
+		&.best {
+			position: relative;
 			&:before {
 				content: '';
 				position: absolute;
-				left: 2px;
-				top: 0px;
-				display: block;
-				width: 190px;
-				height: 50px;
-				background: url(../img/sprites.png) no-repeat 0px -300px;
-			}//h2:before
-			&:after {
-				@include bannerArrow();
-				border-right-color: #fff;
-				right: 0px; 
-				top: 0px;
-			}//h2:after
-		}//h2
-		#sizeBanner {
-			background-color: $watermelon;
-			@include transition();
-			&:hover {
+				top: 0;
+				left: 0;
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				background: url('../img/sprites.png') no-repeat -480px -300px;
+			}
+			.title {
+				background-color: $orange;
+			}
+			a {
+				background-color: $watermelon;
+				&:hover {
 				background-color:  darken($watermelon, 15%);
-				@include transition();
-			}
-		}
-		#brandBanner {
-			background-color: $orange;
-			@include transition();
-			&:hover {
-				background-color:  darken($orange, 15%);
-				@include transition();
-			}
-		}
-
-		ul {
-			font-size: .875rem;
-		}
-	}//aside
-
-	main {
-		.block {
-			position: relative;
-			width: 100%;
-			height: 350px;
-			padding: 1rem;
-			margin-bottom: 0.9375rem;
-			background-color: #fff;
-			@include shadow();
-			font-size: .875rem;
-			text-align: center;
-		}//block
-		.th {
-			box-shadow: none;
-		}
-		h6 {
-			font-family: helvetica;
-		}
-		.pin-link {
-			position: relative;
-			background-color: $beige;
-			padding: 7px 25px 7px 43px;
-			color: $teal;
-			border-radius: 10px;
-			text-align: left;
-			font-family: 'Handlee', cursiva;
-			font-size: 1.125rem;
-			font-weight: bold;
-			line-height: 1.4rem;
-			@include shadow (2px, 3px);
-			cursor: pointer;
-			@include transition();
-			&:before {
-				content:'';
-				position: absolute;
-				top: -5px;
-				left: 0px;
-				display: block;
-				width: 35px;
-				height: 63px;
-				background: url(../img/sprites.png) no-repeat 0px 0px;
-			}//:before
-			&:hover {
-				background-color:  darken($beige, 15%);
-				@include transition();
-			}//:hover
-		}//pin-link
-	}//main
-}//mainResults
-// ============================== //
+				}//a:hover
+			}//a
+		}//best
+	}//pricing-table
+}
+#moreDetails {
+	padding: 3rem;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	background-color: #fff;
+	text-align: left;
+}//moreDetails
+// ======================== //
 footer {
 	background: $gray url('../img/bgd-doodles.png') repeat;
 	padding: 0px;
@@ -296,7 +578,7 @@ footer {
 		padding-top: 30px;
 		h3 {
 			position: relative;
-			border-bottom: 2px dotted #fff;
+			border-bottom: 2px dotted $teal;
 			margin-bottom: 2rem;
 			padding-left: 50px;
 			&:before {
@@ -308,39 +590,106 @@ footer {
 				height: 3rem;
 				width: 3rem;
 				background: url('../img/sprites.png') no-repeat;
-			}
+			}//before
 		}//h3
 		#why:before {
-				background-position: -213px -305px;
-			}
+			background-position: -213px -305px;
+		}//why
 		#contactus:before {
-				background-position: -283px -307px;
-			}
+			background-position: -283px -307px;
+		}//contactus
 	}	//footer-top
-	ul.bxslider {
-		
-		li {
-
-		}
-		img {
-			max-width: 100%;
-			height: auto;
-		}
-	
-	}
-	#footer-nav {
-		padding: 20px;
-		color: #fff;
+	#storesCarousel {
+		position: relative;
+		padding: 15px;
+		padding-bottom: 25px;
 		background-color: transparentize(#000, 0.50);
-		a {
-			
+		@include radius();
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 0px;
+			left: 50%;
+			color: $orange;
+		}//after
+		&.activeCarousel:after {
+			content: '\f04c';
+		}//active:after
+		&.pausedCarousel:after {
+			content: '\f04b';
+		}//paused:after
+		.slick-slide {
+			opacity: 0.8;
+			&.slick-center {
+				opacity: 1;
+				transform: scale(1.08);
+			}//slick-center
+		}//slick-slide
+	}//storesCarousel
+	form {
+		textarea, input[type='text'], input[type='email']  {
+			height: 1.75rem;
+			opacity: 0.8;
+		}
+		textarea:focus, input[type='text']:focus, input[type='email']:focus  {
+			border: 2px solid $orange;
+			opacity: 1;
+		}
+		input[type='submit'] {
+			float: right;
+			background-color:  transparentize(#000, 0.50);; 
+			&:hover {
+				background-color: $orange;	
+			}
+		}
+	}//form
+	nav {
+		padding: 20px;
+		background-color: transparentize(#000, 0.50);
+		text-align: center;
+		h6, a {
+			color: $teal;
+			&:hover {
+				color: $yellow;
+			}
+		}
+		ul {
+			display: inline-block;
+		}
+		li {
+			position: relative;
+			padding-right: 20px;
+			font-family: 'Handlee', cursive;
+			font-size: 1rem;
+			&:after {
+				content: '\f142';
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				color: $watermelon;
+			}
+			&:last-child:after {
+				content: '';
+			}	
 		}
 	}//footer-nav
-	
-
+}//footer
+//=========================//
+.reveal-modal {
+	border: 4px solid $orange;
+	@include radius();
 }
-
-
-
+#setAlert{
+	width: 300px;
+	
+	input[type='checkbox']{}
+}
+#comboInput {
+	input[type='text'] {
+		-webkit-appearance: none;
+   	-moz-appearance:    none;
+   		appearance:         none;
+	}
+}
 
  		
