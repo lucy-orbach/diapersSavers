@@ -82,6 +82,57 @@ $( '.activeCarousel' ).click(function() {
 });
 });
 
+// dropdown menu fix //
+
+var triggerBtn = [];
+var triggerParent = [];
+var innerLink = [];
+var otherParent = [];
+var myClass = ('clicked');
+
+
+///////////
+// function dropDown ( triggerBtn ){
+// 	$('html').click(function() {
+//   	if ( triggerBtn.hasClass( myClass) ){
+//   		triggerBtn.removeClass( myClass );
+//   	}//if
+// 	});//html.click
+// 	triggerBtn.click(function(event){
+//     event.stopPropagation();
+//     triggerBtn.toggleClass( myClass);
+// 	});																																							
+// };//dropdown
+
+
+function dropDown ( triggerParent, triggerBtn, contentDrop, innerLink, otherParent){
+	$('html').click(function() {
+  	if ( triggerParent.hasClass( myClass) ){
+  		triggerParent.removeClass( myClass );
+  	}//if
+	});//html.click
+	contentDrop.click(function(event){
+    event.stopPropagation();
+	});
+	triggerBtn.click(function(event){
+    event.stopPropagation();
+    triggerParent.toggleClass( myClass);
+    otherParent.removeClass( myClass);
+	});
+	innerLink.click(function(event){
+    event.stopPropagation();
+    triggerParent.removeClass( myClass);
+    otherParent.addClass( myClass);
+	});	
+	$('#topSearch').hover(function(event){
+    event.stopPropagation();
+    triggerParent.removeClass( myClass);
+	});																																											
+};//dropdown
+
+dropDown ( $('#register'), $('#registerLink'), $('#registerDrop'), $('#logInLinkTo'), $('#logIn') )
+dropDown ( $('#logIn'), $('#logInLink'), $('#logInDrop'), $('#registerLinkTo'), $('#register') )
+
 
 
 

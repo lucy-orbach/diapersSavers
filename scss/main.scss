@@ -13,6 +13,7 @@ text-indent: -9999px;
 select, 
 input[type='text'],
 input[type='email'],
+input[type='password'],
 textarea {
 	border: none;
 	border-radius: .75rem;
@@ -57,7 +58,7 @@ span.small {
 			display: block;
 			width: 190px;
 			height: 50px;
-			background: url(../img/sprites.png) no-repeat 0px -300px;
+			background: url(../img/sprites.png) no-repeat 0px -321px;
 		}//h2:before
 		&:after {
 			@include bannerArrow();
@@ -104,6 +105,8 @@ span.small {
 }//pin-link
 // ======================= //
 #topBar {
+	position: relative;
+	z-index: 1000;
 	a {
 		font-size: 0.8rem;
 		color: white;
@@ -121,6 +124,20 @@ span.small {
 	}//top-bar-ad
 	ul.top-nav {
 		margin-right: 1.375rem;
+		> li > a {
+			display: block;
+			width: 100%;
+			height: 30px;
+		}
+		>li {
+			border-right: solid 1px #7b7878;
+			&:first-child {
+				border-left: solid 1px #7b7878;
+			}
+			&:last-child {
+				border: none;
+			}
+		}
 	}//top-nav
 	li.top-search {
 		padding: 0px 10px;
@@ -185,6 +202,152 @@ span.small {
 		}//hover
 	}//li.top-search
 } //topBar
+#social-count {
+	width: 200px;
+	height: 30px;
+	position: relative;
+	opacity: 0.8;
+}
+#gplus {
+	position: absolute;
+	top: 5px;
+	left: 0px;	
+}
+#fbk {
+	position: absolute;
+	top: 0px;
+	left: 75px;
+}
+#register, #logIn {
+	z-index: 0;
+	color: $teal;
+	> div {
+		left: 0px;
+		top: -900px;
+		@include transition( all, 1s);
+	}//div
+	&.clicked {
+		div {
+			top: 30px;
+			left: 0px;
+		}//.clicked div
+		@include transition( all, 1s);
+	}//.clicked
+	.f-dropdown {
+		border: 2px solid $yellow;
+		> ul li {
+		background-color: #fff;
+		display: block;
+		float: none;
+		text-align: center;
+		}//ul li
+	}//f-dropdown
+	.brand-a{
+		position: relative;
+		display: block;
+		width: 100%;
+		padding-left: 35px;
+		margin: 10px auto;
+		color: $orange;
+		background-color: $beige;
+		border: 1px solid $orange;
+		font-family: 'Handlee', cursive;
+		font-size: 1rem;
+		text-align: left;
+		@include transition();
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0px;
+			display: block;
+			width: 32px;
+			height: 31px;
+			color: #fff;
+			background-color: $orange;
+			text-align: center;
+		}
+		&.signFb:before {
+			content: '\f09a';
+		}
+		&.signGp:before {
+			content: '\f0d5';
+		}
+		&:hover {
+			color: #fff;
+			background-color: $orange;
+			@include transition();
+		}
+	}//brand-a
+	a.plain-a {
+		display: inline-block;
+		background-color: #fff;
+		padding: 0px 3px;
+		color: $orange;
+	}//plain-a
+}// #register, #logIn
+
+#registerDrop {
+	&:before{
+		left: 30px;
+	}//before
+	&:after {
+		left: 29px;
+		border-color: transparent transparent $yellow transparent;
+	}//after
+}//registerDrop
+#logInDrop {
+	form a.plain-a {
+		margin-left: 20px;
+		color: $teal;
+	}
+	&:before{
+		left: 90px;
+	}//before
+	&:after {
+		left: 89px;
+		border-color: transparent transparent $yellow transparent;
+	}//after
+}//logInDrop
+#signEmail, #loginEmail {
+	position: relative;
+  padding: 20px 0px;
+	margin: 30px 0px 10px;
+	border-top: 2px dotted $teal;
+	border-bottom: 2px dotted $teal;
+	span {
+		position: absolute;
+		top: -11px;
+		left: 40%;
+		display: block;
+		width: 50px;
+		color: $teal;
+		background-color: white;
+	}//span
+	form {
+		input {
+			border: 1px solid $yellow;
+			margin: 10px auto;
+		}//input
+		.small {
+			font-size: .75rem;
+			color: $teal;
+			line-height: 1rem;
+		}//small
+		input[type="checkbox"], 
+		.small {
+			display: inline-block;
+			margin: 0px auto;
+			opacity: 0.8;
+		}//checkbox small
+		button {
+			background-color: $orange;
+			&:hover{
+				background-color: darken($orange, 15%);
+				color: #fff;
+			}
+		}
+	}//form
+}//signEmail
 // ======================= //
 .branding {
 	position: relative;
@@ -272,8 +435,9 @@ span.small {
 }//resultsBar
 // ======================== //
 #mainResults {
-	max-width: 98%;
-	margin-top: 10px;
+	width: 97%;
+	max-width: 1425px;
+	margin: 10px auto 0px auto;
 	font-size: 1rem !important;
 }//mainResults
 aside {
@@ -305,7 +469,10 @@ aside {
 			@include transition();
 		}//hover
 	}//brandBanner
-
+	#typeBanner {
+		background-color: #f5ca53;
+		transition: all 0.8s;
+	}//typeBanner
 	ul {
 		font-size: .875rem;
 	}
@@ -334,25 +501,43 @@ main {
 	}//block
 }//main
 #searchResults {
-	.th, .th:hover {
-		box-shadow: none;
-	}//th
+	li.thumb {
+		height: 170px;
+		position: relative;
+		.img-container {
+			margin: auto;
+			width: 160px;
+			height: 160px;
+		}//img-container
+		.th, .th:hover {
+			box-shadow: none;
+			min-height: 125px;
+		}//img.th
+	}//li.thumb
 	li.name {
 		height: 80px;
 		h6 {
-			font-size: 1rem;
+			font-size: 0.9rem;
+			font-weight: bold;
 			font-family: helvetica;
 			line-height: 1rem;
 		}
 	}//li.name
-	a.compare {
-		display: block;
-		width: 100%;
+	li.button-area {
 		height: 80px;
-		background-position-x: -195px;
-		background-position-y: -305px;
-		
-	}
+		a.compare {
+			display: block;
+			width: 100%;
+			height: 80px;
+			background-position-x: -195px;
+			background-position-y: -326px;
+			line-height: 1.7rem;
+			&:hover {
+				color: #fff;
+			}//a:hover
+		}//a.compare
+	}//li.buttomn-area
+	
 }//searchResults
 #itemDet{
 	height: auto;
@@ -398,7 +583,7 @@ main {
 		right: 3rem;
 		width: 295px;
 		background-position-x: -617px;
-		background-position-y: -299px;
+		background-position-y: -320px;
 		h5 {
 			margin-bottom: 0;
 		}//h5
@@ -448,7 +633,6 @@ main {
 				&:after {
 					content: '\f0a4';
 					padding-left: 10px;
-					color: $teal;
 				}
 			}
 			form {
@@ -480,6 +664,7 @@ main {
 	li {
 		position: relative;
 		padding-left: 14px;
+		margin-left: 0.9rem;
 		color: #fff;
 		font-size: .85rem;
 		line-height: 1.6rem;
@@ -489,6 +674,7 @@ main {
 			position: absolute;
 			top: 0px;
 			left: 0px;
+
 		}//li:before
 	}//li
 	li.active {	
@@ -496,7 +682,10 @@ main {
 			content: '\f05d';
 		}//li:before
 	}//li.active
-}
+	label {
+		margin-right: 0rem;
+	}
+}//inMember
 #priceComparison {
 	margin: 0rem;
 	@include radius();
@@ -545,7 +734,7 @@ main {
 				display: inline-block;
 				width: 100px;
 				height: 100px;
-				background: url('../img/sprites.png') no-repeat -480px -300px;
+				background: url('../img/sprites.png') no-repeat -481px -320px;
 			}
 			.title {
 				background-color: $orange;
@@ -593,10 +782,10 @@ footer {
 			}//before
 		}//h3
 		#why:before {
-			background-position: -213px -305px;
+			background-position: -0px -186px;
 		}//why
 		#contactus:before {
-			background-position: -283px -307px;
+			background-position: -0px -228px;
 		}//contactus
 	}	//footer-top
 	#storesCarousel {
@@ -676,9 +865,55 @@ footer {
 }//footer
 //=========================//
 .reveal-modal {
+	width: 90%;
+	max-width: 350px;
 	border: 4px solid $orange;
 	@include radius();
 }
+.brand-a {
+	position: relative;
+	display: block;
+	width: 90%;
+	padding: 3px 3px 3px 30px;
+	border: 2px solid $gray;
+	color: $gray;
+
+}
+.form-modal {
+	input {
+		border: 2px solid $yellow;
+	}
+}
+
+#top-ad-Modal {
+	width: 860px;
+	max-width: 860px;
+	padding: 15px 15px 15px 280px;
+	background: #fff url('../img/sprites.png') no-repeat -50px 0px;
+	ul{
+		position: relative;
+		margin-left: 0px;
+		padding-top: 20px;
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			display: block;
+			width: 50px;
+			height: 190px;
+			background: url('../img/sprites.png') no-repeat 0px 0px;
+		}//ul:before
+	}//ul
+	li {
+		height: 60px;
+		padding-left: 50px;
+		font-family: 'Handlee', cursive;
+		font-size: 1.3rem;
+		line-height: 1.5rem;
+		
+	}//li
+}//top-ad-modal
 #setAlert{
 	width: 300px;
 	
@@ -692,4 +927,4 @@ footer {
 	}
 }
 
- 		
+ //-----//

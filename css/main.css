@@ -15,6 +15,7 @@ a, a:hover {
 select,
 input[type='text'],
 input[type='email'],
+input[type='password'],
 textarea {
   border: none;
   border-radius: .75rem;
@@ -63,7 +64,7 @@ span.small {
   display: block;
   width: 190px;
   height: 50px;
-  background: url(../img/sprites.png) no-repeat 0px -300px;
+  background: url(../img/sprites.png) no-repeat 0px -321px;
 }
 .banner:after {
   content: '';
@@ -118,6 +119,10 @@ span.small {
   transition: all 0.8s;
 }
 
+#topBar {
+  position: relative;
+  z-index: 1000;
+}
 #topBar a {
   font-size: 0.8rem;
   color: white;
@@ -137,6 +142,20 @@ span.small {
 }
 #topBar ul.top-nav {
   margin-right: 1.375rem;
+}
+#topBar ul.top-nav > li > a {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+#topBar ul.top-nav > li {
+  border-right: solid 1px #7b7878;
+}
+#topBar ul.top-nav > li:first-child {
+  border-left: solid 1px #7b7878;
+}
+#topBar ul.top-nav > li:last-child {
+  border: none;
 }
 #topBar li.top-search {
   padding: 0px 10px;
@@ -199,6 +218,153 @@ span.small {
   left: 5px;
   color: #676464;
   transition: all 1s;
+}
+
+#social-count {
+  width: 200px;
+  height: 30px;
+  position: relative;
+  opacity: 0.8;
+}
+
+#gplus {
+  position: absolute;
+  top: 5px;
+  left: 0px;
+}
+
+#fbk {
+  position: absolute;
+  top: 0px;
+  left: 75px;
+}
+
+#register, #logIn {
+  z-index: 0;
+  color: #5daba8;
+}
+#register > div, #logIn > div {
+  left: 0px;
+  top: -900px;
+  transition: all 1s;
+}
+#register.clicked, #logIn.clicked {
+  transition: all 1s;
+}
+#register.clicked div, #logIn.clicked div {
+  top: 30px;
+  left: 0px;
+}
+#register .f-dropdown, #logIn .f-dropdown {
+  border: 2px solid #f5ca53;
+}
+#register .f-dropdown > ul li, #logIn .f-dropdown > ul li {
+  background-color: #fff;
+  display: block;
+  float: none;
+  text-align: center;
+}
+#register .brand-a, #logIn .brand-a {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-left: 35px;
+  margin: 10px auto;
+  color: #efa04d;
+  background-color: #f9f9f7;
+  border: 1px solid #efa04d;
+  font-family: 'Handlee', cursive;
+  font-size: 1rem;
+  text-align: left;
+  transition: all 0.8s;
+}
+#register .brand-a:before, #logIn .brand-a:before {
+  content: '';
+  position: absolute;
+  left: 0px;
+  display: block;
+  width: 32px;
+  height: 31px;
+  color: #fff;
+  background-color: #efa04d;
+  text-align: center;
+}
+#register .brand-a.signFb:before, #logIn .brand-a.signFb:before {
+  content: '\f09a';
+}
+#register .brand-a.signGp:before, #logIn .brand-a.signGp:before {
+  content: '\f0d5';
+}
+#register .brand-a:hover, #logIn .brand-a:hover {
+  color: #fff;
+  background-color: #efa04d;
+  transition: all 0.8s;
+}
+#register a.plain-a, #logIn a.plain-a {
+  display: inline-block;
+  background-color: #fff;
+  padding: 0px 3px;
+  color: #efa04d;
+}
+
+#registerDrop:before {
+  left: 30px;
+}
+#registerDrop:after {
+  left: 29px;
+  border-color: transparent transparent #f5ca53 transparent;
+}
+
+#logInDrop form a.plain-a {
+  margin-left: 20px;
+  color: #5daba8;
+}
+#logInDrop:before {
+  left: 90px;
+}
+#logInDrop:after {
+  left: 89px;
+  border-color: transparent transparent #f5ca53 transparent;
+}
+
+#signEmail, #loginEmail {
+  position: relative;
+  padding: 20px 0px;
+  margin: 30px 0px 10px;
+  border-top: 2px dotted #5daba8;
+  border-bottom: 2px dotted #5daba8;
+}
+#signEmail span, #loginEmail span {
+  position: absolute;
+  top: -11px;
+  left: 40%;
+  display: block;
+  width: 50px;
+  color: #5daba8;
+  background-color: white;
+}
+#signEmail form input, #loginEmail form input {
+  border: 1px solid #f5ca53;
+  margin: 10px auto;
+}
+#signEmail form .small, #loginEmail form .small {
+  font-size: .75rem;
+  color: #5daba8;
+  line-height: 1rem;
+}
+#signEmail form input[type="checkbox"],
+#signEmail form .small, #loginEmail form input[type="checkbox"],
+#loginEmail form .small {
+  display: inline-block;
+  margin: 0px auto;
+  opacity: 0.8;
+}
+#signEmail form button, #loginEmail form button {
+  background-color: #efa04d;
+}
+#signEmail form button:hover, #loginEmail form button:hover {
+  background-color: #dc7a14;
+  color: #fff;
 }
 
 .branding {
@@ -285,8 +451,9 @@ span.small {
 }
 
 #mainResults {
-  max-width: 98%;
-  margin-top: 10px;
+  width: 97%;
+  max-width: 1425px;
+  margin: 10px auto 0px auto;
   font-size: 1rem !important;
 }
 
@@ -321,6 +488,10 @@ aside #brandBanner:hover {
   background-color: #dc7a14;
   transition: all 0.8s;
 }
+aside #typeBanner {
+  background-color: #f5ca53;
+  transition: all 0.8s;
+}
 aside ul {
   font-size: .875rem;
 }
@@ -348,23 +519,41 @@ main .block:last-child {
   float: left;
 }
 
-#searchResults .th, #searchResults .th:hover {
+#searchResults li.thumb {
+  height: 170px;
+  position: relative;
+}
+#searchResults li.thumb .img-container {
+  margin: auto;
+  width: 160px;
+  height: 160px;
+}
+#searchResults li.thumb .th, #searchResults li.thumb .th:hover {
   box-shadow: none;
+  min-height: 125px;
 }
 #searchResults li.name {
   height: 80px;
 }
 #searchResults li.name h6 {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
   font-family: helvetica;
   line-height: 1rem;
 }
-#searchResults a.compare {
+#searchResults li.button-area {
+  height: 80px;
+}
+#searchResults li.button-area a.compare {
   display: block;
   width: 100%;
   height: 80px;
   background-position-x: -195px;
-  background-position-y: -305px;
+  background-position-y: -326px;
+  line-height: 1.7rem;
+}
+#searchResults li.button-area a.compare:hover {
+  color: #fff;
 }
 
 #itemDet {
@@ -413,7 +602,7 @@ main .block:last-child {
   right: 3rem;
   width: 295px;
   background-position-x: -617px;
-  background-position-y: -299px;
+  background-position-y: -320px;
 }
 #itemInfo .bubble h5 {
   margin-bottom: 0;
@@ -465,7 +654,6 @@ main .block:last-child {
 #options h6:after {
   content: '\f0a4';
   padding-left: 10px;
-  color: #5daba8;
 }
 #options form {
   padding: 0px 0px 0px 10px;
@@ -495,6 +683,7 @@ main .block:last-child {
 #inMember li {
   position: relative;
   padding-left: 14px;
+  margin-left: 0.9rem;
   color: #fff;
   font-size: .85rem;
   line-height: 1.6rem;
@@ -508,6 +697,9 @@ main .block:last-child {
 }
 #inMember li.active:before {
   content: '\f05d';
+}
+#inMember label {
+  margin-right: 0rem;
 }
 
 #priceComparison {
@@ -561,7 +753,7 @@ main .block:last-child {
   display: inline-block;
   width: 100px;
   height: 100px;
-  background: url("../img/sprites.png") no-repeat -480px -300px;
+  background: url("../img/sprites.png") no-repeat -481px -320px;
 }
 #pcList .pricing-table.best .title {
   background-color: #efa04d;
@@ -609,10 +801,10 @@ footer #footer-top h3:before {
   background: url("../img/sprites.png") no-repeat;
 }
 footer #footer-top #why:before {
-  background-position: -213px -305px;
+  background-position: -0px -186px;
 }
 footer #footer-top #contactus:before {
-  background-position: -283px -307px;
+  background-position: -0px -228px;
 }
 footer #storesCarousel {
   position: relative;
@@ -690,10 +882,54 @@ footer nav li:last-child:after {
 }
 
 .reveal-modal {
+  width: 90%;
+  max-width: 350px;
   border: 4px solid #efa04d;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
+}
+
+.brand-a {
+  position: relative;
+  display: block;
+  width: 90%;
+  padding: 3px 3px 3px 30px;
+  border: 2px solid #676464;
+  color: #676464;
+}
+
+.form-modal input {
+  border: 2px solid #f5ca53;
+}
+
+#top-ad-Modal {
+  width: 860px;
+  max-width: 860px;
+  padding: 15px 15px 15px 280px;
+  background: white url("../img/sprites.png") no-repeat -50px 0px;
+}
+#top-ad-Modal ul {
+  position: relative;
+  margin-left: 0px;
+  padding-top: 20px;
+}
+#top-ad-Modal ul:before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: block;
+  width: 50px;
+  height: 190px;
+  background: url("../img/sprites.png") no-repeat 0px 0px;
+}
+#top-ad-Modal li {
+  height: 60px;
+  padding-left: 50px;
+  font-family: 'Handlee', cursive;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
 }
 
 #setAlert {

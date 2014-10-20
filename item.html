@@ -30,22 +30,72 @@
         </div>
          <!-- top-navigation --> 
         <div class="top-bar-section">
-          <ul class="right top-nav">
+          <ul class="right top-nav has-dropdown">
             <li class="divider"></li>
-            <li>
-              <a href="#">Register</a>
+            <li id="register">
+              <a href="#" id="registerLink">Register</a>
+              <!-- signUp -->
+              <div id="registerDrop" class="f-dropdown content small">
+                <h3>Sign Up</h3>
+                <ul>
+                  <li>
+                    <a href="#" class="brand-a signFb">Sign Up with Facebook</a>
+                  </li>
+                  <li>
+                    <a href="#" class="brand-a signGp">Sign Up with Google</a>
+                  </li>
+                  <li id="signEmail">
+                    <span>or</span>
+                    <h6>Sign Up with Email</h6>
+                      <form>
+                        <input type="email" placeholder="Enter Your Email" required>
+                        <input type="password" placeholder="Enter Password" required>
+                        <input type="password" placeholder="Confirm Password" required>
+                        <input type="checkbox" name="allowNews" id="allowNews">
+                        <label class="small">Tell me about DiapersSavers news</label>
+                        <p class="small">By signing up, I agree to Diapers Savers's Terms of Service and Privacy Policy</p>
+                        <button type="submit" class="button round">Sign up</button>
+                      </form>
+                  </li><!-- signUpEm -->
+                  <li>
+                    <span class="small">Already a Diapers Savers member?<a id="logInLinkTo" href="#" class="plain-a">Log In</a></span>
+                  </li>
+                </ul>
+              </div><!--signUpForm -->
             </li>
-            <li class="divider"></li>
-            <li>
-              <a href="#">Sign In</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a href="#">Help</a>
-            </li>
-            <li class="divider"></li>
+            <li id="logIn">
+              <a href="#" id="logInLink">Log In</a>
+              <!-- logInForm -->
+              <div id="logInDrop" class="f-dropdown content small">
+                <h3>Log In</h3>
+                <ul>
+                  <li>
+                    <a href="#" class="brand-a signFb">Log In with Facebook</a>
+                  </li>
+                  <li>
+                    <a href="#" class="brand-a signGp">Log In with Google</a>
+                  </li>
+                  <li id="loginEmail">
+                    <span>or</span>
+                    <form>
+                      <input type="email" placeholder="Enter Your Email" required>
+                      <input type="password" placeholder="Enter Password" required>
+                      <input type="checkbox" name="remember" id="remember">
+                      <label class="small">Remember Me</label>
+                      <a href="#" class="plain-a">Forgot password?</a>
+                      <button type="submit" class="button round">Log In</button>
+                    </form>
+                  </li>
+                  <li>
+                    <span class="small">Don't have an account?<a id="registerLinkTo" href="#" class="plain-a">Sign In</a></span>
+                    
+                  </li>
+                </ul>
+              </div><!--signUpForm -->
+            </li><!-- log In -->
+            <li><a href="#">Help</a></li>
             <!-- search box -->
-            <li class="top-search">
+            <li id="topSearch" class="top-search">
               <form  id="Search" action="" class="slide-container">
                 <label>Search</label>
                 <input type="text" >
