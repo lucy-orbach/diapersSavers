@@ -104,6 +104,9 @@ span.small {
 	}//:hover
 }//pin-link
 // ======================= //
+body {
+	background: $beige url(../img/bgd-stripes.png) repeat;
+}
 #topBar {
 	position: relative;
 	z-index: 1000;
@@ -439,6 +442,7 @@ span.small {
 	max-width: 1425px;
 	margin: 10px auto 0px auto;
 	font-size: 1rem !important;
+
 }//mainResults
 aside {
 	position: relative; 

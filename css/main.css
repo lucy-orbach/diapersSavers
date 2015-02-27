@@ -119,6 +119,10 @@ span.small {
   transition: all 0.8s;
 }
 
+body {
+  background: #f9f9f7 url(../img/bgd-stripes.png) repeat;
+}
+
 #topBar {
   position: relative;
   z-index: 1000;
